@@ -12,6 +12,13 @@ type UpgradeConfigSpec struct {
 	// Specify the desired OpenShift release
 	Desired Update `json:"desired"`
 
+	// Specify the upgrade start time
+	UpgradeAt string `json:"upgradeAt"`
+
+	// +kubebuilder:default:=true
+	// Given all conditions have passed and cluster is ready to upgrade, proceed governs this decision to continue and commence the upgrade
+	Proceed bool `json:"proceed"`
+
 	// This defines the 3rd party operator subscriptions upgrade
 	// +kubebuilder:validation:Optional
 	SubscriptionUpdates []SubscriptionUpdate `json:"subscriptionUpdates,omitempty"`

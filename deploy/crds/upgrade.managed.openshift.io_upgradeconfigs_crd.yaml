@@ -71,6 +71,12 @@ spec:
                 - force
                 - version
                 type: object
+              proceed:
+                default: true
+                description: Given all conditions have passed and cluster is ready
+                  to upgrade, proceed governs this decision to continue and commence
+                  the upgrade
+                type: boolean
               subscriptionUpdates:
                 description: This defines the 3rd party operator subscriptions upgrade
                 items:
@@ -92,8 +98,13 @@ spec:
                   - namespace
                   type: object
                 type: array
+              upgradeAt:
+                description: Specify the upgrade start time
+                type: string
             required:
             - desired
+            - proceed
+            - upgradeAt
             type: object
           status:
             description: UpgradeConfigStatus defines the observed state of UpgradeConfig
